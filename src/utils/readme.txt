@@ -1,0 +1,1 @@
+Thư mục utils đóng vai trò chứa các function được tái sử dụng trong dự án. VD bạn làm một trang về học tập, cần check deadline bài tập ở nhiều nơi thì sẽ tạo ra một hàm riêng check deadline.

@@ -1,0 +1,1 @@
+Thư mục service đóng vai trò chứa các setup axios trong dự án và các file thực hiện nhiệm vụ chứa các xử lí API trong dự án
