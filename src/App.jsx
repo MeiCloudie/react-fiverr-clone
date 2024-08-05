@@ -1,5 +1,9 @@
+import useRoutesCustom from "./hooks/useRoutesCustom"
+
 function App() {
-  return <div className="text-red-500">Đây là Template ReactJS phiên bản 18</div>
+  const routes = useRoutesCustom()
+
+  return routes
 }
 
 export default App
