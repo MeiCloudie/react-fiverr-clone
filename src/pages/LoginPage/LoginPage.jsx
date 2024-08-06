@@ -1,6 +1,7 @@
 import React from "react"
 import { useLottie } from "lottie-react"
 import signInAnimation from "../../assets/animation/signInAnimation.json"
+import InputCustom from "../../components/Input/InputCustom"
 
 const LoginPage = () => {
   const options = {
@@ -18,6 +19,10 @@ const LoginPage = () => {
           <div className="loginPage_form w-1/2">
             <form action="">
               <h1>Giao diện đăng nhập</h1>
+              <InputCustom
+                labelContent={"Email"}
+                placeholder={"Vui lòng nhập email"}
+              />
             </form>
           </div>
         </div>
