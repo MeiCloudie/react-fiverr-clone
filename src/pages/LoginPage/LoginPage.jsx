@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import signInAnimation from "./../../assets/animation/signInAnimation.json"
 import { useLottie } from "lottie-react"
 import InputCustom from "../../components/Input/InputCustom"
@@ -8,7 +8,9 @@ import * as yup from "yup"
 import { authService } from "../../service/auth.service"
 import { http } from "../../service/config"
 import { setLocalStorage } from "../../utils/util"
+import { NotificationContext } from "../../App"
 const LoginPage = () => {
+  const { showNotification } = useContext(NotificationContext)
   const options = {
     animationData: signInAnimation,
     loop: true,
@@ -37,6 +39,7 @@ const LoginPage = () => {
           })
           .catch((err) => {
             console.log(err)
+            showNotification(err.response.data.message, "error")
           })
       },
       validationSchema: yup.object({
