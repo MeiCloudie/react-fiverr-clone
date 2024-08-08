@@ -11,7 +11,14 @@ import { setLocalStorage } from "../../utils/util"
 import { NotificationContext } from "../../App"
 import { useDispatch } from "react-redux"
 import { getInfoUser } from "../../redux/authSlice"
+import useResponsive from "../../hooks/useResponsive"
 const LoginPage = () => {
+  const isResponsive = useResponsive({
+    mobile: 576,
+    tablet: 768,
+    // laptop: 1440,
+  })
+  console.log(isResponsive)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { showNotification } = useContext(NotificationContext)
@@ -73,9 +80,23 @@ const LoginPage = () => {
   return (
     <div className="">
       <div className="container">
-        <div className="loginPage_content flex items-center h-screen">
-          <div className="loginPage_img w-1/2">{View}</div>
-          <div className="loginPage_form w-1/2">
+        <div
+          className={`loginPage_content ${
+            isResponsive.mobile ? "block" : "flex"
+          } items-center h-screen`}
+        >
+          <div
+            className={`loginPage_img ${
+              isResponsive.mobile ? "w-full" : "w-1/2"
+            }`}
+          >
+            {View}
+          </div>
+          <div
+            className={`loginPage_form ${
+              isResponsive.mobile ? "w-full" : "w-1/2"
+            }`}
+          >
             <form className="space-y-5" onSubmit={handleSubmit}>
               <h1 className="text-center text-4xl font-medium uppercase">
                 Giao diện đăng nhập
