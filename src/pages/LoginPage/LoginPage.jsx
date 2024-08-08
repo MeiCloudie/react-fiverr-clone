@@ -2,14 +2,18 @@ import React, { useContext } from "react"
 import signInAnimation from "./../../assets/animation/signInAnimation.json"
 import { useLottie } from "lottie-react"
 import InputCustom from "../../components/Input/InputCustom"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 import * as yup from "yup"
 import { authService } from "../../service/auth.service"
 import { http } from "../../service/config"
 import { setLocalStorage } from "../../utils/util"
 import { NotificationContext } from "../../App"
+import { useDispatch } from "react-redux"
+import { getInfoUser } from "../../redux/authSlice"
 const LoginPage = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const { showNotification } = useContext(NotificationContext)
   const options = {
     animationData: signInAnimation,
@@ -36,6 +40,18 @@ const LoginPage = () => {
             console.log(res)
             // B1 thực hiện lưu trữ ở localStorage
             setLocalStorage("user", res.data.content)
+
+            dispatch(getInfoUser(res.data.content))
+
+            // B2 thực hiện thông báo và chuyển hướng người dùng
+            showNotification(
+              "Đăng nhập thành công bạn sẽ được chuyển hướng về trang chủ",
+              "success",
+              2000
+            )
+            setTimeout(() => {
+              navigate("/")
+            }, 1000)
           })
           .catch((err) => {
             console.log(err)

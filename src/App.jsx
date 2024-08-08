@@ -8,10 +8,10 @@ export const NotificationContext = React.createContext()
 function App() {
   const routes = useRoutesCustom()
 
-  const showNotification = (content, type) => {
+  const showNotification = (content, type, duration = 4000) => {
     toast[type](content, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: duration,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
