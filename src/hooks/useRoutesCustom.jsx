@@ -5,6 +5,7 @@ import PageNotFound from "../components/PageNotFound/PageNotFound"
 import { path } from "../common/path"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import ListJobPage from "../pages/ListJobPage/ListJobPage"
+import WrapperSuggestJob from "../components/Wrapper/WrapperSuggestJob"
 
 const useRoutesCustom = () => {
   const routes = useRoutes([
