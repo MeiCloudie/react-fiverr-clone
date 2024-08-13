@@ -6,6 +6,7 @@ import { path } from "../common/path"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import ListJobPage from "../pages/ListJobPage/ListJobPage"
 import WrapperSuggestJob from "../components/Wrapper/WrapperSuggestJob"
+import AdminTemplate from "../template/AdminTemplate/AdminTemplate"
 
 const useRoutesCustom = () => {
   const routes = useRoutes([
@@ -26,6 +27,10 @@ const useRoutesCustom = () => {
     {
       path: path.signIn,
       element: <LoginPage />,
+    },
+    {
+      path: path.admin,
+      element: <AdminTemplate />,
     },
   ])
   return routes
