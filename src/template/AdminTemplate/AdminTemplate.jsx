@@ -5,7 +5,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons"
 import { Button, Layout, Menu, theme } from "antd"
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 const { Header, Sider, Content } = Layout
 
 const AdminTemplate = () => {
@@ -15,7 +15,7 @@ const AdminTemplate = () => {
   } = theme.useToken()
 
   return (
-    <Layout>
+    <Layout className="min-h-screen">
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
         <Menu
@@ -68,7 +68,7 @@ const AdminTemplate = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+          <Outlet />
         </Content>
       </Layout>
     </Layout>

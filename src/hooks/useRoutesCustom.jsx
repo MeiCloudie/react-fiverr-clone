@@ -7,6 +7,8 @@ import LoginPage from "../pages/LoginPage/LoginPage"
 import ListJobPage from "../pages/ListJobPage/ListJobPage"
 import WrapperSuggestJob from "../components/Wrapper/WrapperSuggestJob"
 import AdminTemplate from "../template/AdminTemplate/AdminTemplate"
+import AdminLogin from "../pages/AdminLogin/AdminLogin"
+import ManagerUser from "../pages/ManagerUser/ManagerUser"
 
 const useRoutesCustom = () => {
   const routes = useRoutes([
@@ -31,6 +33,17 @@ const useRoutesCustom = () => {
     {
       path: path.admin,
       element: <AdminTemplate />,
+      children: [
+        {
+          // path: "/manager-user",
+          index: true,
+          element: <ManagerUser />,
+        },
+      ],
+    },
+    {
+      path: "/admin-login",
+      element: <AdminLogin />,
     },
   ])
   return routes
