@@ -2,18 +2,18 @@ import React, { useState } from "react"
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  UploadOutlined,
   UserOutlined,
+  VideoCameraOutlined,
 } from "@ant-design/icons"
 import { Button, Layout, Menu, theme } from "antd"
 import { Link, Outlet } from "react-router-dom"
 const { Header, Sider, Content } = Layout
-
 const AdminTemplate = () => {
   const [collapsed, setCollapsed] = useState(false)
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken()
-
   return (
     <Layout className="min-h-screen">
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -26,7 +26,7 @@ const AdminTemplate = () => {
             {
               key: "1",
               icon: <UserOutlined />,
-              label: <Link>Người dùng</Link>,
+              label: <Link to="/admin/manager-user">Người dùng</Link>,
             },
             {
               key: "2",
@@ -35,7 +35,7 @@ const AdminTemplate = () => {
             },
             {
               key: "3",
-              icon: <i className="fa-solid fa-handshake"></i>,
+              icon: <i className="fa-regular fa-handshake"></i>,
               label: <Link>Công việc đã thuê</Link>,
             },
           ]}
@@ -74,5 +74,4 @@ const AdminTemplate = () => {
     </Layout>
   )
 }
-
 export default AdminTemplate
