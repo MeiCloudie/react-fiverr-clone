@@ -130,7 +130,10 @@ const SignUpPage = () => {
                 >
                   Đăng ký
                 </button>
-                <Link className="mt-3 text-blue-600 inline-block hover:underline duration-300">
+                <Link
+                  to="/sign-in"
+                  className="mt-3 text-blue-600 inline-block hover:underline duration-300"
+                >
                   Đã có tài khoản? Đăng Nhập
                 </Link>
               </div>

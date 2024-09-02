@@ -129,8 +129,11 @@ const LoginPage = () => {
                 >
                   Đăng nhập
                 </button>
-                <Link className="mt-3 text-blue-600 inline-block hover:underline duration-300">
-                  Chưa có tài khoản ư, bấm vào đây nè
+                <Link
+                  to="/sign-up"
+                  className="mt-3 text-blue-600 inline-block hover:underline duration-300"
+                >
+                  Chưa có tài khoản? Đăng Ký
                 </Link>
               </div>
             </form>
