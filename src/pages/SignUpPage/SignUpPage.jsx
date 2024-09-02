@@ -1,63 +1,50 @@
 import React, { useContext } from "react"
-import signInAnimation from "./../../assets/animation/signInAnimation.json"
+import signUpAnimation from "./../../assets/animation/signUpAnimation.json"
 import { useLottie } from "lottie-react"
 import InputCustom from "../../components/Input/InputCustom"
 import { Link, useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 import * as yup from "yup"
 import { authService } from "../../service/auth.service"
-import { setLocalStorage } from "../../utils/util"
 import { NotificationContext } from "../../App"
-import { useDispatch } from "react-redux"
-import { getInfoUser } from "../../redux/authSlice"
 import useResponsive from "../../hooks/useResponsive"
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const isResponsive = useResponsive({
     mobile: 576,
     tablet: 768,
     // laptop: 1440,
   })
-  // console.log(isResponsive)
+
   const navigate = useNavigate()
-  const dispatch = useDispatch()
   const { showNotification } = useContext(NotificationContext)
   const options = {
-    animationData: signInAnimation,
+    animationData: signUpAnimation,
     loop: true,
   }
 
   const { View } = useLottie(options)
 
-  // NV1 : thực hiện setup formik trong phần form login page
-  // NV2 : gắn các thuộc tính cần cho các input vào 2 component inputcustom
-  // NV3 : gắn validation cho 2 inputcustom : email (required,email) - password (required, min(6), max(10))
-  // NV4 : thực hiện test phần form xem các onsubmit và validation hoạt động có đúng hay k
   const { handleSubmit, handleChange, values, errors, touched, handleBlur } =
     useFormik({
       initialValues: {
+        name: "",
         email: "",
         password: "",
       },
       onSubmit: (values) => {
         console.log(values)
         authService
-          .signIn(values)
+          .signUp(values)
           .then((res) => {
             console.log(res)
-            // B1 thực hiện lưu trữ ở localStorage
-            setLocalStorage("user", res.data.content)
-
-            dispatch(getInfoUser(res.data.content))
-
-            // B2 thực hiện thông báo và chuyển hướng người dùng
             showNotification(
-              "Đăng nhập thành công bạn sẽ được chuyển hướng về trang chủ",
+              "Đăng ký thành công! Bạn hãy đăng nhập nhé!",
               "success",
               2000
             )
             setTimeout(() => {
-              navigate("/")
+              navigate("/sign-in")
             }, 1000)
           })
           .catch((err) => {
@@ -66,6 +53,10 @@ const LoginPage = () => {
           })
       },
       validationSchema: yup.object({
+        name: yup
+          .string()
+          .required("Vui lòng không bỏ trống")
+          .matches(/^[A-Za-zÀ-ỹ\s]+$/, "Vui lòng nhập chữ"),
         email: yup
           .string()
           .required("Vui lòng không bỏ trống")
@@ -81,26 +72,36 @@ const LoginPage = () => {
     <div className="">
       <div className="container">
         <div
-          className={`loginPage_content ${
+          className={`signUpPage_content ${
             isResponsive.mobile ? "block" : "flex"
           } items-center h-screen`}
         >
           <div
-            className={`loginPage_img ${
+            className={`signUpPage_img ${
               isResponsive.mobile ? "w-full" : "w-1/2"
             }`}
           >
             {View}
           </div>
           <div
-            className={`loginPage_form ${
+            className={`signUpPage_form ${
               isResponsive.mobile ? "w-full" : "w-1/2"
             }`}
           >
             <form className="space-y-5" onSubmit={handleSubmit}>
               <h1 className="text-center text-4xl font-medium uppercase">
-                Đăng nhập
+                Đăng ký
               </h1>
+              <InputCustom
+                name={"name"}
+                onChange={handleChange}
+                value={values.name}
+                labelContent={"Họ Tên"}
+                placeholder={"Vui lòng nhập họ tên"}
+                error={errors.name}
+                touched={touched.name}
+                onBlur={handleBlur}
+              />
               <InputCustom
                 name={"email"}
                 onChange={handleChange}
@@ -127,10 +128,10 @@ const LoginPage = () => {
                   type="submit"
                   className="inline-block w-full bg-black text-white py-2 px-5 rounded-md"
                 >
-                  Đăng nhập
+                  Đăng ký
                 </button>
                 <Link className="mt-3 text-blue-600 inline-block hover:underline duration-300">
-                  Chưa có tài khoản ư, bấm vào đây nè
+                  Đã có tài khoản? Đăng Nhập
                 </Link>
               </div>
             </form>
@@ -141,4 +142,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default SignUpPage
