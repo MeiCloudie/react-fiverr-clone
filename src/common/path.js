@@ -4,6 +4,7 @@ export const path = {
   signUp: "/sign-up",
   signIn: "/sign-in",
   listJob: "/list-job",
+  jobDetail: "/job-detail",
   admin: "/admin",
   adminLogin: "/admin-login",
   managerUser: "manager-user",
