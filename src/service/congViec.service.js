@@ -10,4 +10,7 @@ export const congViecService = {
   deleteJob: (id) => {
     return http.delete(`/cong-viec?id=${id}`)
   },
+  getJobDetail: (id) => {
+    return http.get(`/cong-viec/lay-cong-viec-chi-tiet/${id}`)
+  },
 }
