@@ -31,7 +31,7 @@ const AdminTemplate = () => {
             {
               key: "2",
               icon: <i className="fa-solid fa-briefcase"></i>,
-              label: <Link>Công việc</Link>,
+              label: <Link to="/admin/manager-job">Công việc</Link>,
             },
             {
               key: "3",

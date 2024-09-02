@@ -18,6 +18,8 @@ const ManagerUser = React.lazy(() =>
   import("./../pages/ManagerUser/ManagerUser")
 )
 
+const ManagerJob = React.lazy(() => import("./../pages/ManagerJob/ManagerJob"))
+
 const useRoutesCustom = () => {
   const routes = useRoutes([
     {
@@ -51,7 +53,7 @@ const useRoutesCustom = () => {
       element: <AdminTemplate />,
       children: [
         {
-          path: "manager-user",
+          path: path.managerUser,
           // index: true,
           element: (
             <Suspense fallback={<Skeleton />}>
@@ -62,6 +64,14 @@ const useRoutesCustom = () => {
         {
           path: "create-user",
           element: <CreateUser />,
+        },
+        {
+          path: "manager-job",
+          element: (
+            <Suspense fallback={<Skeleton />}>
+              <ManagerJob />
+            </Suspense>
+          ),
         },
       ],
     },
