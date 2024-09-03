@@ -23,6 +23,8 @@ const FormSeachProduct = ({ setOpenDropdown, handleGetValueChildren }) => {
     // B1 thực hiện lấy dữ liệu người dùng (valueSearch)
     // B2 sử dụng useNavigate để chuyển hướng người dùng tới trang danh sách công việc
     navigate(`${path.listJob}?tenCongViec=${valueSearch}`)
+    // Khi submit rồi thì sẽ đóng dropdown
+    setOpenDropdown(false)
     // B3 đưa dữ liệu người dùng đã nhập (keyword) vào query param khi chuyển hướng
   }
 
