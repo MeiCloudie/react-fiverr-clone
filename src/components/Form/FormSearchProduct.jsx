@@ -39,9 +39,12 @@ const FormSeachProduct = ({ setOpenDropdown, handleGetValueChildren }) => {
             onChange={handleChange}
             className="flex-1 focus:border-none focus:outline-none"
             type="text"
-            placeholder="nhập tên công việc cần kiếm"
+            placeholder="What service are you looking for today?"
           />
-          <button type="submit" className="p-2 text-sm">
+          <button
+            type="submit"
+            className="py-2 px-3 text-sm bg-black text-white hover:bg-gray-800"
+          >
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
