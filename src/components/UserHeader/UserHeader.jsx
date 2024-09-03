@@ -67,8 +67,8 @@ const UserHeader = () => {
   }
 
   return (
-    <>
-      <header className="py-5 border-b shadow-md">
+    <div className="sticky top-0 z-50">
+      <header className="py-5 border-b shadow-md bg-white">
         <div className="container">
           <div className="header_content flex items-center justify-between">
             <div className="header_logo flex items-center space-x-5">
@@ -107,7 +107,7 @@ const UserHeader = () => {
       <div className="my-2 container">
         <DeveloperTestingModeAlert />
       </div>
-    </>
+    </div>
   )
 }
 
