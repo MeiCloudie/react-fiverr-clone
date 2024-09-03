@@ -34,7 +34,7 @@ const FormSeachProduct = ({ setOpenDropdown, handleGetValueChildren }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="flex items-center justify-between w-[500px] border rounded-md border-black pl-4">
+        <div className="flex items-center justify-between w-[550px] border rounded-md border-black bg-white pl-4">
           <input
             onChange={handleChange}
             className="flex-1 focus:border-none focus:outline-none"
@@ -43,7 +43,7 @@ const FormSeachProduct = ({ setOpenDropdown, handleGetValueChildren }) => {
           />
           <button
             type="submit"
-            className="py-2 px-3 text-sm bg-black text-white hover:bg-gray-800"
+            className="py-2 px-3 m-1 rounded-md text-sm bg-green-950 text-white hover:bg-green-700 duration-300"
           >
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
