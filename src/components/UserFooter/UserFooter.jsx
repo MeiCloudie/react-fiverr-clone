@@ -168,28 +168,28 @@ const UserFooter = () => {
           <div className="flex items-center">
             <div className="space-x-7 text-xl">
               <button className="hover:text-green-700 duration-200">
-                <i class="fa-brands fa-tiktok"></i>
+                <i className="fa-brands fa-tiktok"></i>
               </button>
               <button className="hover:text-green-700 duration-200">
-                <i class="fa-brands fa-instagram"></i>
+                <i className="fa-brands fa-instagram"></i>
               </button>
               <button className="hover:text-green-700 duration-200">
-                <i class="fa-brands fa-linkedin"></i>
+                <i className="fa-brands fa-linkedin"></i>
               </button>
               <button className="hover:text-green-700 duration-200">
-                <i class="fa-brands fa-facebook"></i>
+                <i className="fa-brands fa-facebook"></i>
               </button>
               <button className="hover:text-green-700 duration-200">
-                <i class="fa-brands fa-pinterest"></i>
+                <i className="fa-brands fa-pinterest"></i>
               </button>
               <button className="hover:text-green-700 duration-200">
-                <i class="fa-brands fa-twitter"></i>
+                <i className="fa-brands fa-twitter"></i>
               </button>
             </div>
 
             <div className="text-lg ms-14 space-x-4">
               <button className="rounded-full hover:bg-gray-100 py-1 px-3">
-                <i class="fa-solid fa-globe"></i> English
+                <i className="fa-solid fa-globe"></i> English
               </button>
               <button className="rounded-full hover:bg-gray-100 py-1 px-3">
                 $ USD

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { congViecService } from "../../service/congViec.service"
+
 const ListJobPage = () => {
-  // [ {hoTen: "Khai"},{hoTen: "Đông"}] ==> [<div></div>,<div></div>]
   const [searchParam, setSearchParam] = useSearchParams()
   const [listJob, setListJob] = useState([])
+
   console.log(searchParam.get("tenCongViec"))
+
   useEffect(() => {
     let tenCongViec = searchParam.get("tenCongViec")
     congViecService
@@ -18,6 +20,7 @@ const ListJobPage = () => {
         console.log(err)
       })
   }, [searchParam.get("tenCongViec")])
+
   return (
     <div className="container">
       <h1 className="text-5xl font-bold">
@@ -27,7 +30,7 @@ const ListJobPage = () => {
       <div className="grid grid-cols-4 gap-10 mt-10">
         {listJob.map((item, index) => {
           return (
-            <div className="space-y-4 border rounded-md p-3">
+            <div key={index} className="space-y-4 border rounded-md p-3">
               <img src={item.congViec?.hinhAnh} className="w-full" alt="" />
               {/* người tạo  */}
               <div className="flex items-center space-x-3">
@@ -43,7 +46,7 @@ const ListJobPage = () => {
                 <h3>{item.congViec?.tenCongViec}</h3>
                 <p>
                   <span className="text-yellow-400 space-x-2">
-                    <i class="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
                     {item.congViec?.saoCongViec}
                   </span>{" "}
                   <span className="text-gray-400">
@@ -53,7 +56,7 @@ const ListJobPage = () => {
               </div>
               {/* lựa chọn yêu thích và giá tiền công việc  */}
               <div className="flex justify-between items-center">
-                <i class="fa-solid fa-heart"></i>
+                <i className="fa-solid fa-heart"></i>
                 <p className="uppercase">
                   Starting at <span>${item.congViec?.giaTien}</span>
                 </p>
