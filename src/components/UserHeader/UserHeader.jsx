@@ -8,6 +8,7 @@ import UserIcon from "../Icon/UserIcon"
 import LogoutIcon from "../Icon/LogoutIcon"
 import FormSeachProduct from "../Form/FormSearchProduct"
 import WrapperSuggestJob from "../Wrapper/WrapperSuggestJob"
+import DeveloperTestingModeAlert from "./DeveloperTestingModeAlert"
 const items = [
   {
     label: (
@@ -40,7 +41,10 @@ const UserHeader = () => {
         }}
         trigger={["click"]}
       >
-        <Avatar className="cursor-pointer hover:bg-orange-500 duration-300">
+        <Avatar
+          size={40}
+          className="cursor-pointer uppercase hover:bg-green-700 duration-300"
+        >
           {infoUser.user.name.slice(0, 1)}
         </Avatar>
       </Dropdown>
@@ -63,41 +67,47 @@ const UserHeader = () => {
   }
 
   return (
-    <header className="py-5 border shadow-md">
-      <div className="container">
-        <div className="header_content flex items-center justify-between">
-          <div className="header_logo flex items-center space-x-5">
-            <Link to={path.homePage}>
-              <LogoIcon />
-            </Link>
+    <>
+      <header className="py-5 border-b shadow-md">
+        <div className="container">
+          <div className="header_content flex items-center justify-between">
+            <div className="header_logo flex items-center space-x-5">
+              <Link to={path.homePage}>
+                <LogoIcon />
+              </Link>
 
-            <WrapperSuggestJob>
-              <FormSeachProduct />
-            </WrapperSuggestJob>
+              <WrapperSuggestJob>
+                <FormSeachProduct />
+              </WrapperSuggestJob>
+            </div>
+
+            <nav className="header_navigate space-x-5 text-lg font-bold text-gray-600">
+              <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+                Fiverr Pro <i className="fa-solid fa-angle-down"></i>
+              </Link>
+
+              <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+                Explore <i className="fa-solid fa-angle-down"></i>
+              </Link>
+
+              <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+                <i className="fa-solid fa-globe"></i> English
+              </Link>
+
+              <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+                Become a Seller
+              </Link>
+
+              {checkUserLogin()}
+            </nav>
           </div>
-
-          <nav className="header_navigate space-x-5 text-lg font-bold text-gray-600">
-            <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
-              Fiverr Pro <i className="fa-solid fa-angle-down"></i>
-            </Link>
-
-            <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
-              Explore <i className="fa-solid fa-angle-down"></i>
-            </Link>
-
-            <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
-              <i className="fa-solid fa-globe"></i> English
-            </Link>
-
-            <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
-              Become a Seller
-            </Link>
-
-            {checkUserLogin()}
-          </nav>
         </div>
+      </header>
+
+      <div className="my-2 container">
+        <DeveloperTestingModeAlert />
       </div>
-    </header>
+    </>
   )
 }
 
