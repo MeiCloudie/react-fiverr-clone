@@ -48,9 +48,9 @@ const UserHeader = () => {
       <>
         <Link
           to={path.signIn}
-          className="py-2 px-4 rounded-md hover:bg-gray-200 duration-300"
+          className="py-2 px-4 hover:text-green-500 duration-300"
         >
-          sign in
+          Sign In
         </Link>
         <Link
           to={path.signUp}
@@ -63,7 +63,7 @@ const UserHeader = () => {
   }
 
   return (
-    <header className="py-5">
+    <header className="py-5 border shadow-md">
       <div className="container">
         <div className="header_content flex items-center justify-between">
           <div className="header_logo flex items-center space-x-5">
@@ -75,7 +75,26 @@ const UserHeader = () => {
               <FormSeachProduct />
             </WrapperSuggestJob>
           </div>
-          <nav className="header_navigate space-x-5">{checkUserLogin()}</nav>
+
+          <nav className="header_navigate space-x-5 text-lg font-bold text-gray-600">
+            <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+              Fiverr Pro <i className="fa-solid fa-angle-down"></i>
+            </Link>
+
+            <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+              Explore <i className="fa-solid fa-angle-down"></i>
+            </Link>
+
+            <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+              <i className="fa-solid fa-globe"></i> English
+            </Link>
+
+            <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+              Become a Seller
+            </Link>
+
+            {checkUserLogin()}
+          </nav>
         </div>
       </div>
     </header>
