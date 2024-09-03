@@ -153,7 +153,7 @@ const ListJobPage = () => {
             >
               <div
                 key={index}
-                className="space-y-4 border rounded-lg shadow-lg p-4"
+                className="space-y-4 border rounded-lg shadow-lg p-4 h-full"
               >
                 <img
                   src={
