@@ -8,6 +8,7 @@ import * as yup from "yup"
 import { authService } from "../../service/auth.service"
 import { NotificationContext } from "../../App"
 import useResponsive from "../../hooks/useResponsive"
+import LogoIcon from "../../components/Icon/LogoIcon"
 
 const SignUpPage = () => {
   const isResponsive = useResponsive({
@@ -55,49 +56,81 @@ const SignUpPage = () => {
       validationSchema: yup.object({
         name: yup
           .string()
-          .required("Vui lòng không bỏ trống")
-          .matches(/^[A-Za-zÀ-ỹ\s]+$/, "Vui lòng nhập chữ"),
+          .required("Please do not leave this field empty")
+          .matches(/^[A-Za-zÀ-ỹ\s]+$/, "Please enter letters only"),
         email: yup
           .string()
-          .required("Vui lòng không bỏ trống")
-          .email("Vui lòng nhập đúng định dạng email"),
+          .required("Please do not leave this field empty")
+          .email("Please enter a valid email address"),
         password: yup
           .string()
-          .required("Vui lòng không bỏ trống")
-          .min(6, "Vui lòng tối thiểu 6 ký tự")
-          .max(10, "Vui lòng nhập tối đa 10 ký tự"),
+          .required("Please do not leave this field empty")
+          .min(6, "Please enter at least 6 characters")
+          .max(10, "Please enter no more than 10 characters"),
       }),
     })
+
   return (
-    <div className="">
+    <div className="bg-green-100 h-screen">
+      {/* Logo */}
+      <div className="px-52 py-12">
+        <LogoIcon />
+      </div>
+
+      {/* Main */}
       <div className="container">
         <div
           className={`signUpPage_content ${
             isResponsive.mobile ? "block" : "flex"
-          } items-center h-screen`}
+          } items-center`}
         >
           <div
-            className={`signUpPage_img ${
+            className={`signUpPage_img flex flex-col justify-center items-center ${
               isResponsive.mobile ? "w-full" : "w-1/2"
             }`}
           >
-            {View}
+            {/* title */}
+            <div className="p-10 space-y-4">
+              <h1 className="text-6xl font-bold leading-tight">
+                Hey there, <br />
+                Create a new account
+              </h1>
+              <p className="text-2xl font-medium italic">
+                Access to talent and businesses across the globe
+              </p>
+            </div>
+
+            {/* image animation */}
+            <div className="w-1/3 h-auto">{View}</div>
+
+            {/* more info */}
+            <div className="flex space-x-10 mt-20">
+              <Link className="font-medium hover:text-green-700 duration-200">
+                Terms of Service
+              </Link>
+              <Link className="font-medium hover:text-green-700 duration-200">
+                Privacy Policy
+              </Link>
+              <Link className="font-medium hover:text-green-700 duration-200">
+                Insurance Licenses
+              </Link>
+            </div>
           </div>
           <div
             className={`signUpPage_form ${
               isResponsive.mobile ? "w-full" : "w-1/2"
             }`}
           >
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <h1 className="text-center text-4xl font-medium uppercase">
-                Đăng ký
+            <form className="space-y-5 px-8" onSubmit={handleSubmit}>
+              <h1 className="text-center text-4xl font-bold uppercase">
+                SIGN UP TO JOIN WITH US
               </h1>
               <InputCustom
                 name={"name"}
                 onChange={handleChange}
                 value={values.name}
-                labelContent={"Họ Tên"}
-                placeholder={"Vui lòng nhập họ tên"}
+                labelContent={"Full Name"}
+                placeholder={"Type your full name..."}
                 error={errors.name}
                 touched={touched.name}
                 onBlur={handleBlur}
@@ -107,7 +140,7 @@ const SignUpPage = () => {
                 onChange={handleChange}
                 value={values.email}
                 labelContent={"Email"}
-                placeholder={"Vui lòng nhập email"}
+                placeholder={"Type your email..."}
                 error={errors.email}
                 touched={touched.email}
                 onBlur={handleBlur}
@@ -116,7 +149,7 @@ const SignUpPage = () => {
                 name={"password"}
                 onChange={handleChange}
                 value={values.password}
-                placeholder={"Vui lòng nhập mật khẩu"}
+                placeholder={"Type your password..."}
                 labelContent={"Password"}
                 typeInput="password"
                 error={errors.password}
@@ -126,18 +159,29 @@ const SignUpPage = () => {
               <div>
                 <button
                   type="submit"
-                  className="inline-block w-full bg-black text-white py-2 px-5 rounded-md"
+                  className="my-4 inline-block w-full font-bold bg-green-800 text-white py-2 px-5 rounded-md hover:bg-green-600 duration-200"
                 >
-                  Đăng ký
+                  JOIN
                 </button>
-                <Link
-                  to="/sign-in"
-                  className="mt-3 text-blue-600 inline-block hover:underline duration-300"
-                >
-                  Đã có tài khoản? Đăng Nhập
-                </Link>
+                <p className="text-center font-medium">
+                  Already have an account? &nbsp;
+                  <span>
+                    <Link
+                      to="/sign-in"
+                      className="mt-3 text-green-600 inline-block hover:underline duration-300"
+                    >
+                      Sign in
+                    </Link>
+                  </span>
+                </p>
               </div>
             </form>
+
+            <p className="mt-28 px-10 leading-relaxed text-gray-600">
+              By joining, you agree to the Fiverr Terms of Service and to
+              occasionally receive emails from us. Please read our Privacy
+              Policy to learn how we use your personal data.
+            </p>
           </div>
         </div>
       </div>
