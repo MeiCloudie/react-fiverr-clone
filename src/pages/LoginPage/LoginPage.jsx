@@ -11,6 +11,7 @@ import { NotificationContext } from "../../App"
 import { useDispatch } from "react-redux"
 import { getInfoUser } from "../../redux/authSlice"
 import useResponsive from "../../hooks/useResponsive"
+import LogoIcon from "../../components/Icon/LogoIcon"
 
 const LoginPage = () => {
   const isResponsive = useResponsive({
@@ -68,45 +69,77 @@ const LoginPage = () => {
       validationSchema: yup.object({
         email: yup
           .string()
-          .required("Vui lòng không bỏ trống")
-          .email("Vui lòng nhập đúng định dạng email"),
+          .required("Please do not leave this field empty")
+          .email("Please enter a valid email address"),
         password: yup
           .string()
-          .required("Vui lòng không bỏ trống")
-          .min(6, "Vui lòng tối thiểu 6 ký tự")
-          .max(10, "Vui lòng nhập tối đa 10 ký tự"),
+          .required("Please do not leave this field empty")
+          .min(6, "Please enter at least 6 characters")
+          .max(10, "Please enter no more than 10 characters"),
       }),
     })
+
   return (
-    <div className="">
+    <div className="bg-green-100 h-screen">
+      {/* Logo */}
+      <div className="px-52 py-12">
+        <LogoIcon />
+      </div>
+
+      {/* Main */}
       <div className="container">
         <div
           className={`loginPage_content ${
             isResponsive.mobile ? "block" : "flex"
-          } items-center h-screen`}
+          } items-center`}
         >
           <div
-            className={`loginPage_img ${
+            className={`loginPage_img flex flex-col justify-center items-center ${
               isResponsive.mobile ? "w-full" : "w-1/2"
             }`}
           >
-            {View}
+            {/* title */}
+            <div className="p-10 space-y-4">
+              <h1 className="text-7xl font-bold leading-tight">
+                Hey there, <br />
+                welcome back!
+              </h1>
+              <p className="text-2xl font-medium italic">
+                Access to talent and businesses across the globe
+              </p>
+            </div>
+
+            {/* image animation */}
+            <div>{View}</div>
+
+            {/* more info */}
+            <div className="flex space-x-10 mt-20">
+              <Link className="font-medium hover:text-green-700 duration-200">
+                Terms of Service
+              </Link>
+              <Link className="font-medium hover:text-green-700 duration-200">
+                Privacy Policy
+              </Link>
+              <Link className="font-medium hover:text-green-700 duration-200">
+                Insurance Licenses
+              </Link>
+            </div>
           </div>
           <div
             className={`loginPage_form ${
               isResponsive.mobile ? "w-full" : "w-1/2"
             }`}
           >
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <h1 className="text-center text-4xl font-medium uppercase">
-                Đăng nhập
+            <form className="space-y-5 px-8" onSubmit={handleSubmit}>
+              <h1 className="text-center text-4xl font-bold uppercase">
+                LOGIN
               </h1>
               <InputCustom
                 name={"email"}
                 onChange={handleChange}
                 value={values.email}
                 labelContent={"Email"}
-                placeholder={"Vui lòng nhập email"}
+                placeholder={"Type your email..."}
                 error={errors.email}
                 touched={touched.email}
                 onBlur={handleBlur}
@@ -115,28 +148,39 @@ const LoginPage = () => {
                 name={"password"}
                 onChange={handleChange}
                 value={values.password}
-                placeholder={"Vui lòng nhập mật khẩu"}
+                placeholder={"Type your password..."}
                 labelContent={"Password"}
                 typeInput="password"
                 error={errors.password}
                 touched={touched.password}
                 onBlur={handleBlur}
               />
-              <div>
+              <div className="">
                 <button
                   type="submit"
-                  className="inline-block w-full bg-black text-white py-2 px-5 rounded-md"
+                  className="my-4 inline-block w-full font-bold bg-green-800 text-white py-2 px-5 rounded-md hover:bg-green-600 duration-200"
                 >
-                  Đăng nhập
+                  LOGIN
                 </button>
-                <Link
-                  to="/sign-up"
-                  className="mt-3 text-blue-600 inline-block hover:underline duration-300"
-                >
-                  Chưa có tài khoản? Đăng Ký
-                </Link>
+                <p className="text-center font-medium">
+                  Don't have an account? &nbsp;
+                  <span>
+                    <Link
+                      to="/sign-up"
+                      className="mt-3 text-green-600 inline-block hover:underline duration-300"
+                    >
+                      Join here
+                    </Link>
+                  </span>
+                </p>
               </div>
             </form>
+
+            <p className="mt-36 px-10 leading-relaxed text-gray-600">
+              By joining, you agree to the Fiverr Terms of Service and to
+              occasionally receive emails from us. Please read our Privacy
+              Policy to learn how we use your personal data.
+            </p>
           </div>
         </div>
       </div>
