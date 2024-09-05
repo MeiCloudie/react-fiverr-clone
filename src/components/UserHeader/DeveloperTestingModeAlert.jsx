@@ -10,14 +10,17 @@ const DeveloperTestingModeAlert = () => {
         message="Developer Testing Mode"
         description={
           <div className="flex gap-4">
-            <p>This product is still in development. This is a section to support page navigation:</p>
+            <p>
+              This product is still in development. This is a section to support
+              page navigation:
+            </p>
             <ul className="font-bold flex gap-4">
               <li>
                 <Link to={path.listJob}>Job List Page</Link>
               </li>
               <p> • </p>
               <li>
-                <Link to={path.admin}>Administration Page</Link>
+                <Link to={path.adminLogin}>Administration Login Page</Link>
               </li>
             </ul>
           </div>
