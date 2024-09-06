@@ -72,11 +72,11 @@ const useRoutesCustom = () => {
           ),
         },
         {
-          path: "create-user",
+          path: path.createUser,
           element: <CreateUser />,
         },
         {
-          path: "manager-job",
+          path: path.managerJob,
           element: (
             <Suspense fallback={<Skeleton />}>
               <ManagerJob />

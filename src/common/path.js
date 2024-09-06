@@ -9,4 +9,5 @@ export const path = {
   adminLogin: "/admin-login",
   managerUser: "manager-user",
   managerJob: "manager-job",
+  createUser: "create-user",
 }
