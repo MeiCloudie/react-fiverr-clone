@@ -4,10 +4,17 @@ import { path } from "../../common/path"
 import { Dropdown, Space } from "antd"
 import { congViecService } from "../../service/congViec.service"
 import useDebounce from "../../hooks/useDebounce"
+import useResponsive from "../../hooks/useResponsive"
 
 const FormSeachProduct = ({ setOpenDropdown, handleGetValueChildren }) => {
   const navigate = useNavigate()
   const [valueSearch, setValueSearch] = useState("")
+
+  const isResponsive = useResponsive({
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
+  })
 
   useEffect(() => {
     if (setOpenDropdown && handleGetValueChildren) {
@@ -36,12 +43,24 @@ const FormSeachProduct = ({ setOpenDropdown, handleGetValueChildren }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="flex items-center justify-between w-[550px] border rounded-md border-black bg-white pl-4">
+        <div
+          className={`flex items-center justify-between border rounded-md border-black bg-white pl-4 ${
+            isResponsive.mobile
+              ? "w-[150px]"
+              : isResponsive.tablet || isResponsive.mac
+              ? "w-[400px]"
+              : "w-[550px]"
+          }`}
+        >
           <input
             onChange={handleChange}
-            className="flex-1 focus:border-none focus:outline-none"
+            className="flex-1 focus:border-none focus:outline-none w-full"
             type="text"
-            placeholder="What service are you looking for today?"
+            placeholder={`${
+              isResponsive.mobile
+                ? "Search..."
+                : "What service are you looking for today?"
+            }`}
           />
           <button
             type="submit"

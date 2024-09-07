@@ -15,11 +15,11 @@ import LogoIcon from "../../components/Icon/LogoIcon"
 
 const LoginPage = () => {
   const isResponsive = useResponsive({
-    mobile: 576,
-    tablet: 768,
-    // laptop: 1440,
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
   })
-  // console.log(isResponsive)
+  console.log(isResponsive)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { showNotification } = useContext(NotificationContext)

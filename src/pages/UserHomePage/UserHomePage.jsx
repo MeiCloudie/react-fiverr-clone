@@ -11,8 +11,15 @@ import socialMediaMarketingImg from "../../assets/images/social-media-marketing.
 import voiceOverImg from "../../assets/images/voice-over.png"
 import softwareDevelopmentImg from "../../assets/images/software-development.png"
 import logoMakerImg from "../../assets/images/logo-maker.png"
+import useResponsive from "../../hooks/useResponsive"
 
 const UserHomePage = () => {
+  const isResponsive = useResponsive({
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
+  })
+
   return (
     <div className="container flex flex-col h-full my-6">
       <BannerHomePage />

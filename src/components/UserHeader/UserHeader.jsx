@@ -9,6 +9,7 @@ import LogoutIcon from "../Icon/LogoutIcon"
 import FormSeachProduct from "../Form/FormSearchProduct"
 import WrapperSuggestJob from "../Wrapper/WrapperSuggestJob"
 import DeveloperTestingModeAlert from "./DeveloperTestingModeAlert"
+import useResponsive from "../../hooks/useResponsive"
 const items = [
   {
     label: (
@@ -32,6 +33,14 @@ const items = [
 
 const UserHeader = () => {
   const { infoUser } = useSelector((state) => state.authSlice)
+
+  const isResponsive = useResponsive({
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
+  })
+
+  // console.log(isResponsive)
 
   const checkUserLogin = () => {
     return infoUser ? (
@@ -69,7 +78,7 @@ const UserHeader = () => {
   return (
     <div className="sticky top-0 z-50">
       <header className="py-5 border-b shadow-md bg-white">
-        <div className="container">
+        <div className="container px-6">
           <div className="header_content flex items-center justify-between">
             <div className="header_logo flex items-center space-x-5">
               <Link to={path.homePage}>
@@ -81,20 +90,48 @@ const UserHeader = () => {
               </WrapperSuggestJob>
             </div>
 
-            <nav className="header_navigate space-x-5 text-lg font-bold text-gray-600">
-              <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+            <nav
+              className={`header_navigate font-bold text-gray-600 ${
+                isResponsive.mac ? "text-md space-x-2" : "text-lg space-x-5"
+              }`}
+            >
+              <Link
+                className={`${
+                  isResponsive.tablet || isResponsive.mobile
+                    ? "hidden"
+                    : "py-2 px-4 capitalize hover:text-green-500 duration-300"
+                }`}
+              >
                 Fiverr Pro <i className="fa-solid fa-angle-down"></i>
               </Link>
 
-              <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+              <Link
+                className={`${
+                  isResponsive.tablet || isResponsive.mobile
+                    ? "hidden"
+                    : "py-2 px-4 capitalize hover:text-green-500 duration-300"
+                }`}
+              >
                 Explore <i className="fa-solid fa-angle-down"></i>
               </Link>
 
-              <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+              <Link
+                className={`${
+                  isResponsive.tablet || isResponsive.mobile
+                    ? "hidden"
+                    : "py-2 px-4 capitalize hover:text-green-500 duration-300"
+                }`}
+              >
                 <i className="fa-solid fa-globe"></i> English
               </Link>
 
-              <Link className="py-2 px-4 capitalize hover:text-green-500 duration-300">
+              <Link
+                className={`${
+                  isResponsive.tablet || isResponsive.mobile
+                    ? "hidden"
+                    : "py-2 px-4 capitalize hover:text-green-500 duration-300"
+                }`}
+              >
                 Become a Seller
               </Link>
 
@@ -112,7 +149,3 @@ const UserHeader = () => {
 }
 
 export default UserHeader
-
-// UseFormik và yup
-// query param trong react
-// test tốc độ gõ phím ==> 65 trở lên là oke
