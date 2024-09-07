@@ -21,16 +21,30 @@ const UserHomePage = () => {
   })
 
   return (
-    <div className="container flex flex-col h-full my-6">
+    <div className="container px-6 flex flex-col h-full my-6">
       <BannerHomePage />
       <Categories />
 
       {/* Popular Services */}
       <section>
-        <h1 className="text-5xl mt-16 mb-8">Popular services</h1>
+        <h1
+          className={`${
+            isResponsive.mobile ? "text-3xl" : "text-5xl"
+          } mt-16 mb-8`}
+        >
+          Popular services
+        </h1>
 
         {/* TODO: Phát triển thành carousel sau */}
-        <div className="my-4 grid grid-cols-7 gap-4">
+        <div
+          className={`my-4 grid ${
+            isResponsive.mobile
+              ? "grid-cols-2"
+              : isResponsive.tablet
+              ? "grid-cols-4"
+              : "grid-cols-7"
+          }  gap-4`}
+        >
           <ServiceCard
             text={"Website Development"}
             imageSrc={websiteDevelopmentImg}
@@ -71,11 +85,19 @@ const UserHomePage = () => {
 
       {/* Benefit */}
       <section>
-        <h1 className="text-5xl mt-16 mb-8">
+        <h1
+          className={`${
+            isResponsive.mobile ? "text-3xl" : "text-5xl"
+          } mt-16 mb-8`}
+        >
           Make it all happen with freelancers
         </h1>
 
-        <div className="my-4 grid grid-cols-4 gap-4 text-lg">
+        <div
+          className={`my-4 grid ${
+            isResponsive.tablet ? "grid-cols-2" : "grid-cols-4"
+          } gap-4 text-lg`}
+        >
           <div className="space-y-4">
             <svg
               width="64"
@@ -231,9 +253,19 @@ const UserHomePage = () => {
       </section>
 
       {/* Fiverr logo maker */}
-      <section className="flex w-full justify-center items-center my-10 p-16 bg-orange-100 rounded-lg">
+      <section
+        className={`${
+          isResponsive.mobile
+            ? "block p-8 space-y-8"
+            : "flex justify-center items-center p-16"
+        } w-full my-10 bg-orange-100 rounded-lg`}
+      >
         {/* content */}
-        <div className="w-1/2 ps-16 space-y-8">
+        <div
+          className={`${
+            isResponsive.mobile ? "w-full" : "w-1/2 ps-16"
+          } space-y-8`}
+        >
           <svg
             width={249}
             height={34}
@@ -270,14 +302,22 @@ const UserHomePage = () => {
           </button>
         </div>
         {/* image */}
-        <div className="w-1/2 flex justify-center">
+        <div
+          className={`${
+            isResponsive.mobile ? "w-full" : "w-1/2"
+          } flex justify-center`}
+        >
           <img src={logoMakerImg} alt="logoMakerImg" />
         </div>
       </section>
 
       {/* Slogan */}
       <section className="bg-amber-950 text-center rounded-lg py-10 my-6">
-        <h3 className="text-white text-6xl">
+        <h3
+          className={`text-white ${
+            isResponsive.tablet ? "text-5xl" : "text-6xl"
+          } `}
+        >
           Freelance services at your{" "}
           <span className="font-serif text-orange-400">fingertips</span>
         </h3>

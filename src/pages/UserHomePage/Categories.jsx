@@ -1,9 +1,24 @@
 import React from "react"
 import CategoryCard from "./CategoryCard"
+import useResponsive from "../../hooks/useResponsive"
 
 const Categories = () => {
+  const isResponsive = useResponsive({
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
+  })
+
   return (
-    <div className="my-4 grid grid-cols-9 gap-4">
+    <div
+      className={`my-4 grid ${
+        isResponsive.mobile
+          ? "grid-cols-2"
+          : isResponsive.tablet
+          ? "grid-cols-5"
+          : "grid-cols-9"
+      } gap-4`}
+    >
       <CategoryCard
         icon={
           <svg
