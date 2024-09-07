@@ -5,7 +5,7 @@ import { path } from "../../common/path"
 
 const DeveloperTestingModeAlert = () => {
   return (
-    <div>
+    <div className="px-8">
       <Alert
         message="Developer Testing Mode"
         description={

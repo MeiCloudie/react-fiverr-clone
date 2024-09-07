@@ -1,14 +1,37 @@
 import React from "react"
+import useResponsive from "../../hooks/useResponsive"
 
 const UserFooter = () => {
+  const isResponsive = useResponsive({
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
+  })
+
+  // console.log(isResponsive)
+
   return (
     <footer className="border-t p-10">
-      <div className="container">
-        <div className="grid grid-cols-5 gap-4">
+      <div className="container px-6">
+        <div
+          className={`${
+            isResponsive.mobile ? "grid-cols-2" : "grid-cols-5"
+          } grid  gap-4`}
+        >
           <div className="space-y-4">
-            <h5 className="text-lg text-gray-800 font-bold">Categories</h5>
+            <h5
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-lg"
+              } text-gray-800 font-bold`}
+            >
+              Categories
+            </h5>
 
-            <ul className="text-gray-500 space-y-2">
+            <ul
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-md"
+              } text-gray-500 space-y-2`}
+            >
               <li className="cursor-pointer hover:underline">
                 Graphics & Design
               </li>
@@ -43,9 +66,19 @@ const UserFooter = () => {
           </div>
 
           <div className="space-y-4">
-            <h5 className="text-lg text-gray-800 font-bold">About</h5>
+            <h5
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-lg"
+              } text-gray-800 font-bold`}
+            >
+              About
+            </h5>
 
-            <ul className="text-gray-500 space-y-2">
+            <ul
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-md"
+              } text-gray-500 space-y-2`}
+            >
               <li className="cursor-pointer hover:underline">Careers</li>
               <li className="cursor-pointer hover:underline">Press & News</li>
               <li className="cursor-pointer hover:underline">Partnerships</li>
@@ -63,11 +96,19 @@ const UserFooter = () => {
           </div>
 
           <div className="space-y-4">
-            <h5 className="text-lg text-gray-800 font-bold">
+            <h5
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-lg"
+              } text-gray-800 font-bold`}
+            >
               Support and Education
             </h5>
 
-            <ul className="text-gray-500 space-y-2">
+            <ul
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-md"
+              } text-gray-500 space-y-2`}
+            >
               <li className="cursor-pointer hover:underline">Help & Support</li>
               <li className="cursor-pointer hover:underline">Trust & Safety</li>
               <li className="cursor-pointer hover:underline">Quality Guide</li>
@@ -86,9 +127,19 @@ const UserFooter = () => {
           </div>
 
           <div className="space-y-4">
-            <h5 className="text-lg text-gray-800 font-bold">Community</h5>
+            <h5
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-lg"
+              } text-gray-800 font-bold`}
+            >
+              Community
+            </h5>
 
-            <ul className="text-gray-500 space-y-2">
+            <ul
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-md"
+              } text-gray-500 space-y-2`}
+            >
               <li className="cursor-pointer hover:underline">
                 Customer Success Stories
               </li>
@@ -111,11 +162,19 @@ const UserFooter = () => {
           </div>
 
           <div className="space-y-4">
-            <h5 className="text-lg text-gray-800 font-bold">
+            <h5
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-lg"
+              } text-gray-800 font-bold`}
+            >
               Business Solutions
             </h5>
 
-            <ul className="text-gray-500 space-y-2">
+            <ul
+              className={`${
+                isResponsive.mobile ? "text-sm" : "text-md"
+              } text-gray-500 space-y-2`}
+            >
               <li className="cursor-pointer hover:underline">
                 About Business Solutions
               </li>
@@ -143,9 +202,17 @@ const UserFooter = () => {
 
         <hr className="my-6" />
 
-        <div className="flex justify-between text-gray-400">
+        <div
+          className={`${
+            isResponsive.mobile ? "block space-y-4" : "flex justify-between"
+          }  text-gray-400`}
+        >
           {/* left */}
-          <div className="flex items-center space-x-6">
+          <div
+            className={`${
+              isResponsive.mobile ? "block space-y-4" : "flex items-center"
+            }  space-x-6`}
+          >
             <svg
               width={91}
               height={27}
@@ -165,7 +232,11 @@ const UserFooter = () => {
           </div>
 
           {/* right */}
-          <div className="flex items-center">
+          <div
+            className={`${
+              isResponsive.mobile ? "block space-y-4" : "flex items-center"
+            } `}
+          >
             <div className="space-x-7 text-xl">
               <button className="hover:text-green-700 duration-200">
                 <i className="fa-brands fa-tiktok"></i>
