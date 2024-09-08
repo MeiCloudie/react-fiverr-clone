@@ -11,11 +11,18 @@ import LogoIcon from "../../components/Icon/LogoIcon"
 import adminLoginAnimation from "./../../assets/animation/adminLoginAnimation.json"
 import { useLottie } from "lottie-react"
 import * as yup from "yup"
+import useResponsive from "../../hooks/useResponsive"
 
 const AdminLogin = () => {
   const { showNotification } = useContext(NotificationContext)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const isResponsive = useResponsive({
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
+  })
 
   const options = {
     animationData: adminLoginAnimation,
@@ -78,28 +85,50 @@ const AdminLogin = () => {
   return (
     <div className="bg-green-100 h-screen">
       {/* Logo */}
-      <div className="px-52 py-12">
+      <div className={`${isResponsive.mac ? "px-10 pt-10" : "px-52 py-12"}`}>
         <LogoIcon />
       </div>
 
       {/* Main */}
-      <div className="container">
-        <div className="admin_login flex items-center">
-          <div className="admin_login_image w-1/2 flex flex-col justify-center items-center">
+      <div className="container px-6 py-10 bg-green-100">
+        <div
+          className={`adminPage_content ${
+            isResponsive.tablet ? "block space-y-10" : "flex"
+          } items-center`}
+        >
+          <div
+            className={`adminPage_img flex flex-col justify-center items-center ${
+              isResponsive.tablet ? "w-full" : "w-1/2"
+            }`}
+          >
             {/* title */}
             <div className="p-10 space-y-4">
-              <h1 className="text-5xl font-bold leading-tight">
+              <h1
+                className={`${
+                  isResponsive.mobile ? "text-4xl" : "text-7xl"
+                } font-bold leading-tight`}
+              >
                 This is the <br />
                 administration system
               </h1>
-              <p className="text-2xl font-medium italic">Welcome back admin!</p>
+              <p
+                className={`${
+                  isResponsive.mobile ? "text-lg" : "text-2xl"
+                } font-medium italic`}
+              >
+                Welcome back admin!
+              </p>
             </div>
 
             {/* image animation */}
             <div className="w-1/3 h-auto">{View}</div>
 
             {/* more info */}
-            <div className="flex space-x-10 mt-20">
+            <div
+              className={`${
+                isResponsive.mobile ? "space-x-4 text-sm" : "space-x-10"
+              } flex mt-20`}
+            >
               <Link className="font-medium hover:text-green-700 duration-200">
                 Terms of Service
               </Link>
@@ -111,7 +140,11 @@ const AdminLogin = () => {
               </Link>
             </div>
           </div>
-          <div className="admin_login_form w-1/2 flex flex-col justify-center h-full">
+          <div
+            className={`admin_login_form ${
+              isResponsive.tablet ? "w-full" : "w-1/2"
+            } flex flex-col justify-center h-full`}
+          >
             <h2 className="text-3xl font-bold uppercase text-center mb-5">
               Login for admin
             </h2>
