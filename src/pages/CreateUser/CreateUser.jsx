@@ -8,7 +8,7 @@ import { nguoiDungService } from "../../service/nguoiDung.service"
 const CreateUser = () => {
   const { infoUser } = useSelector((state) => state.authSlice)
   const { listSkill } = useSelector((state) => state.skillSlice)
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(0)
   const dispatch = useDispatch()
 
   const [valueUser, setValueUser] = useState({
