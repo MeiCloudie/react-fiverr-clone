@@ -12,9 +12,9 @@ import LogoIcon from "../../components/Icon/LogoIcon"
 
 const SignUpPage = () => {
   const isResponsive = useResponsive({
-    mobile: 576,
-    tablet: 768,
-    // laptop: 1440,
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
   })
 
   const navigate = useNavigate()
@@ -73,29 +73,37 @@ const SignUpPage = () => {
   return (
     <div className="bg-green-100 h-screen">
       {/* Logo */}
-      <div className="px-52 py-12">
+      <div className={`${isResponsive.mac ? "px-10 pt-10" : "px-52 py-12"}`}>
         <LogoIcon />
       </div>
 
       {/* Main */}
-      <div className="container">
+      <div className="container px-6 py-10 bg-green-100">
         <div
           className={`signUpPage_content ${
-            isResponsive.mobile ? "block" : "flex"
+            isResponsive.tablet ? "block space-y-10" : "flex"
           } items-center`}
         >
           <div
             className={`signUpPage_img flex flex-col justify-center items-center ${
-              isResponsive.mobile ? "w-full" : "w-1/2"
+              isResponsive.tablet ? "w-full" : "w-1/2"
             }`}
           >
             {/* title */}
             <div className="p-10 space-y-4">
-              <h1 className="text-6xl font-bold leading-tight">
+              <h1
+                className={`${
+                  isResponsive.mobile ? "text-4xl" : "text-7xl"
+                } font-bold leading-tight`}
+              >
                 Hey there, <br />
                 Create a new account
               </h1>
-              <p className="text-2xl font-medium italic">
+              <p
+                className={`${
+                  isResponsive.mobile ? "text-lg" : "text-2xl"
+                } font-medium italic`}
+              >
                 Access to talent and businesses across the globe
               </p>
             </div>
@@ -104,7 +112,11 @@ const SignUpPage = () => {
             <div className="w-1/3 h-auto">{View}</div>
 
             {/* more info */}
-            <div className="flex space-x-10 mt-20">
+            <div
+              className={`${
+                isResponsive.mobile ? "space-x-4 text-sm" : "space-x-10"
+              } flex mt-20`}
+            >
               <Link className="font-medium hover:text-green-700 duration-200">
                 Terms of Service
               </Link>
@@ -118,7 +130,7 @@ const SignUpPage = () => {
           </div>
           <div
             className={`signUpPage_form ${
-              isResponsive.mobile ? "w-full" : "w-1/2"
+              isResponsive.tablet ? "w-full" : "w-1/2"
             }`}
           >
             <form className="space-y-5 px-8" onSubmit={handleSubmit}>

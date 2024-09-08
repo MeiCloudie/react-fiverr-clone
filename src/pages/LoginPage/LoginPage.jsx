@@ -19,7 +19,7 @@ const LoginPage = () => {
     tablet: 1024,
     mac: 1440,
   })
-  console.log(isResponsive)
+  // console.log(isResponsive)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { showNotification } = useContext(NotificationContext)
