@@ -4,6 +4,7 @@ import { useLocation, useParams } from "react-router-dom"
 import { getJobDetailApi } from "../../redux/congViecSlice"
 import { Avatar, Rate } from "antd"
 import { Image } from "antd"
+import useResponsive from "../../hooks/useResponsive"
 
 const JobDetail = () => {
   const params = useParams()
@@ -12,6 +13,12 @@ const JobDetail = () => {
   const chiTietCongViec = useSelector(
     (state) => state.congViecSlice.chiTietCongViec
   )
+
+  const isResponsive = useResponsive({
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
+  })
 
   useEffect(() => {
     if (params.id) {
@@ -31,7 +38,7 @@ const JobDetail = () => {
   } = chiTietCongViec
 
   return (
-    <div className="container">
+    <div className="container px-6">
       {/* New */}
       <div className="jobDetail_heading flex my-8 space-x-4 text-xl font-medium">
         <p className="text-blue-800">{tenLoaiCongViec}</p>

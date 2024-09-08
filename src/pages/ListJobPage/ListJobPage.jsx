@@ -7,6 +7,7 @@ import AvatarAltImg from "../../assets/images/avatar-alt.png"
 import { DownOutlined, InfoCircleOutlined } from "@ant-design/icons"
 import { Button, Dropdown, message, Space } from "antd"
 import { path } from "../../common/path"
+import useResponsive from "../../hooks/useResponsive"
 
 const handleMenuClick = (e) => {
   message.info("Coming Soon")
@@ -29,6 +30,12 @@ const menuProps = {
 const ListJobPage = () => {
   const [searchParam, setSearchParam] = useSearchParams()
   const [listJob, setListJob] = useState([])
+
+  const isResponsive = useResponsive({
+    mobile: 640,
+    tablet: 1024,
+    mac: 1440,
+  })
 
   // console.log(searchParam.get("tenCongViec"))
   // console.log(listJob)
@@ -62,7 +69,7 @@ const ListJobPage = () => {
   }, [searchParam.get("tenCongViec")])
 
   return (
-    <div className="container my-10">
+    <div className="container px-6 my-10">
       {searchParam.get("tenCongViec") ? (
         <h1 className="text-4xl">
           Results for{" "}
@@ -76,7 +83,9 @@ const ListJobPage = () => {
         <h1 className="text-4xl font-bold">JOB LIST</h1>
       )}
 
-      <div className="my-6 space-x-4">
+      <div
+        className={`${isResponsive.mobile ? "space-y-2" : ""} my-6 space-x-4`}
+      >
         <Dropdown menu={menuProps}>
           <Button className="p-5">
             <Space>
@@ -123,7 +132,13 @@ const ListJobPage = () => {
         </Dropdown>
       </div>
 
-      <div className="flex justify-between items-center">
+      <div
+        className={`${
+          isResponsive.mobile
+            ? "block text-center"
+            : "flex justify-between items-center"
+        } `}
+      >
         <h3 className="text-lg font-bold text-gray-500">
           {listJob.length} services available
         </h3>
@@ -141,7 +156,15 @@ const ListJobPage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-10 mt-5">
+      <div
+        className={`grid ${
+          isResponsive.mobile
+            ? "grid-cols-1"
+            : isResponsive.tablet
+            ? "grid-cols-2"
+            : "grid-cols-4"
+        }  gap-10 mt-5`}
+      >
         {listJob.map((item, index) => {
           return (
             <Link
