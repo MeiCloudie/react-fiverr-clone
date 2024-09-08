@@ -40,7 +40,11 @@ const JobDetail = () => {
   return (
     <div className="container px-6">
       {/* New */}
-      <div className="jobDetail_heading flex my-8 space-x-4 text-xl font-medium">
+      <div
+        className={`jobDetail_heading flex items-center my-8  ${
+          isResponsive.mobile ? "text-lg space-x-2" : "text-xl space-x-4"
+        } font-medium`}
+      >
         <p className="text-blue-800">{tenLoaiCongViec}</p>
         <p>
           <i className="fa-solid fa-chevron-right"></i>
@@ -52,13 +56,33 @@ const JobDetail = () => {
         <p className="text-blue-800">{tenChiTietLoai}</p>
       </div>
 
-      <div className="jobDetail_main flex space-x-20">
-        <div className="jobDetail_main-left w-2/3">
+      <div
+        className={`${
+          isResponsive.tablet ? "block space-y-10" : "flex space-x-20"
+        } jobDetail_main`}
+      >
+        <div
+          className={`jobDetail_main-left ${
+            isResponsive.tablet ? "w-full" : "w-2/3"
+          } `}
+        >
           {/* title */}
-          <h1 className="text-4xl font-bold mb-10">{congViec.tenCongViec}</h1>
+          <h1
+            className={`${
+              isResponsive.mobile ? "text-2xl" : "text-4xl"
+            } font-bold mb-10`}
+          >
+            {congViec.tenCongViec}
+          </h1>
 
           {/* creator and rating info */}
-          <div className="flex items-center space-x-3 my-4 text-lg">
+          <div
+            className={`${
+              isResponsive.mobile
+                ? "text-sm space-y-2"
+                : "text-lg flex items-center"
+            }  space-x-3 my-4 `}
+          >
             <Avatar size={48} src={avatar} />
             <p className="font-bold capitalize">{tenNguoiTao}</p>
             <p className="text-yellow-400 font-medium">Top Rated Seller</p>
@@ -76,7 +100,11 @@ const JobDetail = () => {
 
           <hr />
 
-          <div className="flex items-center my-8 space-x-2 text-lg">
+          <div
+            className={`${
+              isResponsive.mobile ? "block space-y-1" : "flex items-center"
+            } my-8 space-x-2 text-lg`}
+          >
             <span className="text-yellow-500 me-2">
               <i className="fa-solid fa-trophy"></i>
             </span>
@@ -96,7 +124,11 @@ const JobDetail = () => {
           </div>
         </div>
 
-        <div className="jobDetail_main-right w-1/3 space-y-8">
+        <div
+          className={`jobDetail_main-right ${
+            isResponsive.tablet ? "w-full" : "w-1/3"
+          }  space-y-8`}
+        >
           <div className="card border shadow-md">
             <div className="flex justify-center items-center text-center text-lg font-bold text-gray-600 bg-gray-100">
               <div className="w-full h-auto">
